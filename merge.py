@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 # Created by: Johnny Nguyen
 # This script attempts to ask for a pull request to merge
