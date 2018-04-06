@@ -43,7 +43,7 @@ def create_pull_request():
         # Now attempt to get the title and name
         body = {'base': 'staging', 'head': get_current_branch(), 'title': '{0} - Submitting {0} to Staging'.format(get_current_branch())}
         # CALL THE REQUEST
-        url = 'https://api.github.com/repos/j-nguyen/InvestingInMe/pulls'
+        url = 'https://api.github.com/repos/{0}/{1}/pulls'.format(config['owner'], config['repo'])
         req = urllib2.Request(url)
         encoded = base64.b64encode('{0}:{1}'.format(config['user'], config['token']))
         req.add_header('Authorization', 'Basic {0}'.format(encoded))
@@ -57,9 +57,9 @@ def create_pull_request():
 
 def list_assignees():
     """ Lists the assignees for us """
-    # initial values
-    url = 'https://api.github.com/repos/j-nguyen/InvestingInMe/assignees'
     config = read_config()
+    # initial values
+    url = 'https://api.github.com/repos/{0}/{1}/assignees'.format(config['owner'], config['repo'])
     # Start the request
     req = urllib2.Request(url)
     encoded = base64.b64encode('{0}:{1}'.format(config['user'], config['token']))
@@ -84,8 +84,8 @@ def list_assignees():
 def assign_assignee(pull_request_id, login):
     """ Assigns an assignee for us """
     # initial values
-    url = 'https://api.github.com/repos/j-nguyen/InvestingInMe/issues/{0}/assignees'.format(pull_request_id)
     config = read_config()
+    url = 'https://api.github.com/repos/{0}/{1}/issues/{2}/assignees'.format(config['owner'], config['repo'], pull_request_id)
     # Start the request
     req = urllib2.Request(url)
     body = {'assignees': [login]}
