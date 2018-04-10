@@ -15,16 +15,14 @@ def show_menu(results):
     print '3) Exit - Exits workflow'
     print '==================================================='
 
-    try: 
-        choice = int(raw_input('Enter in a number (1-5): '))
-    except:
-        print "Not a number! Exiting.."
-        return 3
-
+    choice = -1
     while choice not in results:
-        choice = raw_input(util.FAIL + 'Invalid Input! ' + util.ENDC + 'Please enter in a number (1-5): ')
+        try:
+            choice = int(raw_input('Enter in a number (1-3): '))
+        except ValueError:
+            print util.FAIL + "Invalid Input" + util.ENDC + ": Please enter a number between (1-3)"
 
-    return choice 
+    return choice
 
 
 def main():

@@ -5,7 +5,7 @@ import subprocess
 import util
 import branch
 
-def show_menu():
+def show_menu(results):
     """ Shows a menu """
     print '================== ' + util.HEADER + 'WORKFLOW MENU' + util.ENDC + ' =================='
     print '1) Create a git branch'
@@ -13,10 +13,12 @@ def show_menu():
     print '3) Exit - Exits workflow'
     print '==================================================='
 
-    choice = raw_input('Enter in a number (1-3): ')
-
-    while choice not in ['1', '2', '3']:
-        choice = raw_input(util.FAIL + 'Invalid Input! ' + util.ENDC + 'Please enter in a number (1-5): ')
+    choice = -1
+    while choice not in results:
+        try:
+            choice = int(raw_input('Enter in a number (1-3): '))
+        except ValueError:
+            print util.FAIL + "Invalid Input" + util.ENDC + ": Please enter a number between (1-3)"
 
     return choice
 
@@ -26,12 +28,16 @@ def rebase_contents():
 
 def main():
     """ Main function """
-    options = int(show_menu())
+    results = {
+        1: branch.main,
+        2: rebase_contents,
+        3: quit
+    }
+    options = show_menu(results)
 
-    if options == 1:
-        branch.main()
-    elif options == 2:
-        rebase_contents()
-    elif options == 3:
-        exit()
+    # Invoke the command
+    results[options]()
 
+# Run command
+if __name__ == "__main__":
+    main()
