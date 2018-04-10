@@ -23,8 +23,9 @@ def show_menu(results):
     return choice
 
 def rebase_contents():
-    print subprocess.check_call(['git', 'fetch'])
-    print subprocess.check_call(['git', 'pull', 'origin', 'staging'])
+    """ Pulls from staging, and assumes """
+    print subprocess.check_output(['git', 'fetch'])
+    print subprocess.check_output(['git', 'pull', 'origin', 'staging'])
 
 def main():
     """ Main function """

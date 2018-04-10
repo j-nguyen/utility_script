@@ -37,5 +37,5 @@ def main():
     # Invoke the function
     results[option]()
 
-# Run the class
-main()
+if __name__ == "__main__":
+    main()
