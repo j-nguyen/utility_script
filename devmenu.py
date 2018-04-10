@@ -4,7 +4,6 @@
 import subprocess
 import util
 import branch
-import build
 
 def show_menu():
     """ Shows a menu """
@@ -24,8 +23,6 @@ def show_menu():
 def rebase_contents():
     print subprocess.check_call(['git', 'fetch'])
     print subprocess.check_call(['git', 'pull', 'origin', 'staging'])
-    # Re-run the build script
-    build.main()
 
 def main():
     """ Main function """

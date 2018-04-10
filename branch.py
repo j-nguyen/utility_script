@@ -3,7 +3,6 @@
 # Checkouts a new branch for you
 import subprocess
 import util
-import build
 
 def main():
     # Get the branch name
@@ -15,5 +14,3 @@ def main():
     print util.log('Pushing to remote branch')
     # If it's updated, let's go through with the next process
     print subprocess.check_output(['git', 'push', 'origin', 'HEAD'])
-    print util.log('Update build')
-    build.main()

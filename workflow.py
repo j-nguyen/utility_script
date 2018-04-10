@@ -5,7 +5,6 @@
 
 import util
 import merge
-import build
 import devmenu
 
 def show_menu(results):
@@ -16,7 +15,11 @@ def show_menu(results):
     print '3) Exit - Exits workflow'
     print '==================================================='
 
-    choice = raw_input('Enter in a number (1-5): ')
+    try: 
+        choice = int(raw_input('Enter in a number (1-5): '))
+    except:
+        print "Not a number! Exiting.."
+        return 3
 
     while choice not in results:
         choice = raw_input(util.FAIL + 'Invalid Input! ' + util.ENDC + 'Please enter in a number (1-5): ')
@@ -26,12 +29,12 @@ def show_menu(results):
 
 def main():
     # Save option
-    results = [
+    results = {
         1: devmenu.main,
         2: merge.main,
         3: quit,
-    ]
-    option = int(show_menu(results))
+    }
+    option = show_menu(results)
     
     # Invoke the function
     results[option]()
