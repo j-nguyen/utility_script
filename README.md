@@ -1,3 +1,3 @@
 # Utility Scripts
 
-These scripts are used to help assist myself in certain criterias. These are made for iOS scripts, but feel free to change them however you like.
+These are general scripts to help assist with GitHub. Generally, they're just to help you push code out to your repo faster, that's all.

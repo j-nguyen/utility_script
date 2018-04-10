@@ -13,5 +13,5 @@ UNDERLINE = '\033[4m'
 
 def log(string):
     """ Outputs like a console log """
-    return '~*~*~*~*~**~*~*~*~* {0} ~*~*~*~*~**~*~*~*~*'.format(string)
+    return '========== {0} =========='.format(string)
     
