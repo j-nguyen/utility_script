@@ -33,7 +33,7 @@ def update_branch():
     # If it's updated, let's go through with the next process
     print subprocess.check_output(['git', 'push', 'origin', 'HEAD'])
 
-def create_pull_request():
+def create_pull_request(branch_name):
     """ Attempts to create a pull request """
     status = subprocess.check_output(['git', 'status', '--porcelain'])
     # Check if there's nothing to be commited
@@ -41,7 +41,7 @@ def create_pull_request():
         config = read_config()
         update_branch()
         # Now attempt to get the title and name
-        body = {'base': 'staging', 'head': get_current_branch(), 'title': '{0} - Submitting {0} to Staging'.format(get_current_branch())}
+        body = {'base': branch_name, 'head': get_current_branch(), 'title': '{0} - Submitting {0} to {1}'.format(get_current_branch(), branch_name)}
         # CALL THE REQUEST
         url = 'https://api.github.com/repos/{0}/{1}/pulls'.format(config['owner'], config['repo'])
         req = urllib2.Request(url)
