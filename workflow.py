@@ -35,7 +35,10 @@ def main():
     option = show_menu(results)
     
     # Invoke the function
-    results[option]()
+    if option == 2:
+        results[option]('staging')
+    else:
+        results[option]()
 
 if __name__ == "__main__":
     main()

@@ -96,6 +96,6 @@ def assign_assignee(pull_request_id, login):
     print util.log('Reading Response')
     print response.read()
 
-def main():
+def main(branch_name):
     """ Our main function """
-    create_pull_request()
+    create_pull_request(branch_name)
