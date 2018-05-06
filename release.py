@@ -41,7 +41,7 @@ def release():
 	print subprocess.check_output(['git', 'pull', 'origin', 'master'])
 	# Merge & Push
 	print '===== Merging staging to master'
-	print subprocess.check_output(['git', 'merge', 'master'])
+	print subprocess.check_output(['git', 'merge', 'staging'])
 	print subprocess.check_output(['git', 'push', 'origin', 'master'])
 	# Output to show that we've finished
 	print util.OKGREEN + 'SUCCESS!\n' + util.ENDC
