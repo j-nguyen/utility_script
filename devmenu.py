@@ -4,6 +4,7 @@
 import subprocess
 import util
 import branch
+import merge
 
 def show_menu(results):
     """ Shows a menu """
