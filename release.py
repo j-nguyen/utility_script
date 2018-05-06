@@ -34,6 +34,7 @@ def release():
 	# Make sure that everything is up-to-date
 	print '===== Making sure both the local and remote branches are up-to-date'
 	print subprocess.check_output(['git', 'pull', 'origin', 'staging'])
+	print subprocess.check_output(['git', 'push', 'origin', 'staging'])
 	# Checkout to master, and makes sure it's up to date
 	print '===== Checking out to Master'
 	print subprocess.check_output(['git', 'checkout', 'master'])
