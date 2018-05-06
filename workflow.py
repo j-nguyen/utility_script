@@ -6,13 +6,15 @@
 import util
 import merge
 import devmenu
+import release
 
 def show_menu(results):
     """ Shows a menu """
     print '================== ' + util.HEADER + 'WORKFLOW MENU' + util.ENDC + ' =================='
     print '1) Development - Create a git branch off of staging'
     print '2) Merge - Merge your development branch to staging (GitHub)'
-    print '3) Exit - Exits workflow'
+    print '3) Release - Releases to master'
+    print '4) Exit - Exits workflow'
     print '==================================================='
 
     choice = -1
@@ -30,7 +32,8 @@ def main():
     results = {
         1: devmenu.main,
         2: merge.main,
-        3: quit,
+        3: release.main,
+        4: quit
     }
     option = show_menu(results)
     
