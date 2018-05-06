@@ -20,7 +20,7 @@ def show_menu(results):
     choice = -1
     while choice not in results:
         try:
-            choice = int(raw_input('Enter in a number (1-3): '))
+            choice = int(raw_input('Enter in a number (1-4): '))
         except ValueError:
             print util.FAIL + "Invalid Input" + util.ENDC + ": Please enter a number between (1-3)"
 

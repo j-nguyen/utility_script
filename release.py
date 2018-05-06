@@ -15,7 +15,7 @@ def show_menu():
 	choice = -1
 	while choice not in [1,2]:
 		try:
-			choice = int(raw_input('Enter in a number (1-3): '))
+			choice = int(raw_input('Enter in a number (1-2): '))
 		except ValueError:
 			print util.FAIL + "Invalid Input" + util.ENDC + ": Please enter a number between (1-3)"
 
@@ -23,9 +23,14 @@ def show_menu():
 
 def release():
 	""" Releases to master """
+	# Before doing anything, make sure we've committed
+	status = subprocess.check_output(['git', 'status', '--porcelain'])
+	if status != '':
+		print util.FAIL + util.BOLD + 'Your branch needs to be committed.' + util.ENDC 
+		return
 	# Checkout to staging
 	print '=== Checking out to Staging'
-	print subprocess.check_output(['git', 'checkout', '-b', 'staging'])
+	print subprocess.check_output(['git', 'checkout', 'staging'])
 	# Make sure that everything is up-to-date
 	print '=== Making sure both the local and remote branches are up-to-date'
 	print subprocess.check_output(['git', 'pull', 'origin', 'staging'])
