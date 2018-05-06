@@ -29,21 +29,23 @@ def release():
 		print util.FAIL + util.BOLD + 'Your branch needs to be committed.' + util.ENDC 
 		return
 	# Checkout to staging
-	print '=== Checking out to Staging'
+	print '===== Checking out to Staging'
 	print subprocess.check_output(['git', 'checkout', 'staging'])
 	# Make sure that everything is up-to-date
-	print '=== Making sure both the local and remote branches are up-to-date'
+	print '===== Making sure both the local and remote branches are up-to-date'
 	print subprocess.check_output(['git', 'pull', 'origin', 'staging'])
 	# Checkout to master, and makes sure it's up to date
-	print '=== Checking out to Master'
+	print '===== Checking out to Master'
 	print subprocess.check_output(['git', 'checkout', 'master'])
 	print subprocess.check_output(['git', 'pull', 'origin', 'master'])
 	# Merge & Push
-	print '=== Merging staging to master'
+	print '===== Merging staging to master'
 	print subprocess.check_output(['git', 'merge', 'master'])
 	print subprocess.check_output(['git', 'push', 'origin', 'master'])
-	# Ouptut
-	print '=== Finished merging and pushed to master.'
+	# Output to show that we've finished
+	print util.OKGREEN + 'SUCCESS!\n' + util.ENDC
+	print '===== Finished merging and pushed to master.'
+	
 
 def main():
 	""" Executes our main function """
